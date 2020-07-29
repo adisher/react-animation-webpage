@@ -8,7 +8,7 @@ import Loader from './components/Loader';
 export default function App() {
   const [loading, setLoading] = useState(false)
   const [component, setComponent] = useState()
-  
+  console.log(component)
   useEffect(() => {
       setLoading(true);
 

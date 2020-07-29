@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Typography, CardMedia, Container } from '@material-ui/core'
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 import Typed from 'react-typed';
+import useWebAnimations, { fadeInRight } from "@wellyshen/use-web-animations"
 
 import Navbar from './Navbar'; //component
 
@@ -14,7 +15,9 @@ let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 export default function Header() {
-  return (
+    const { ref: headImg } = useWebAnimations({ ...fadeInRight });
+    
+    return (
     <>
         <Navbar/>
         <div style={{position:"relative"}}>
@@ -33,7 +36,7 @@ export default function Header() {
                     }} 
                 /> 
             </div>
-            <Grid container justify="space-between" alignItems="center" style={{position:'relative', zIndex:'1', margin: "10px 0 200px"}}>
+            <Grid id="Intro" container justify="space-between" alignItems="center" style={{position:'relative', zIndex:'1', margin: "10px 0 200px"}}>
                 <Grid item xs={8} md={8}>
                 <ThemeProvider theme={theme}>
                     <Container maxWidth="sm">
@@ -73,6 +76,7 @@ export default function Header() {
                 <Grid item xs={4} md={4}>
                     <CardMedia
                         component="img"
+                        ref={headImg}
                         src={welcome}
                         alt="welcome"
                         style={{maxHeight: "500px", maxWidth: "500px"}}

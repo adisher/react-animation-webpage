@@ -12,6 +12,8 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import search from '../images/search-engines-animate.svg'
 import company from '../images/company-animate.svg'
 
+import useWebAnimations, { pulse } from "@wellyshen/use-web-animations"
+
 
 
 function Social() {
@@ -58,6 +60,16 @@ function Social() {
 
 export default function Footer() {
     const classes = useStyles()
+    const { keyframes, timing } = pulse;
+    const { ref: searchImg } = useWebAnimations({
+      keyframes,
+      timing: {
+        ...timing,
+        delay: 1000, // Delay 1s
+        duration: 3000,
+        iterations: Infinity,
+      },
+    });
   return (
     <>
     <div className={classes.root}>
@@ -72,7 +84,7 @@ export default function Footer() {
             </Typography>
                 <Grid Conainer justify="center" align='center'>
                     <img src={company} alt='company' style={{maxWidth:'300px', maxHeight:'300px'}} />
-                    <img src={search} alt='search' style={{maxWidth:'300px', maxHeight:'300px'}} />
+                    <img ref={searchImg} src={search} alt='search' style={{maxWidth:'300px', maxHeight:'300px'}} />
                 </Grid>
         </Container>
         <footer className={classes.footer}>

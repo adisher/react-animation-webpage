@@ -90,15 +90,23 @@ export default function Navbar() {
                 <Toolbar>
                     <img src={logo} alt="logo" style={{maxWidth: 200}} />
                     <Tabs 
-                        value={tab} onChange={handleChange} 
+                        value={tab} onChange={handleChange}
+                        variant="fullWidth"
                         TabIndicatorProps={{
                             style: {
                             height:"0px",
                             }
                         }}
+                        style={{margin: 'auto'}}
                     >
-                        <Tab label="Home" className={classes.tabLabel} /> 
-      
+                        <NavLink
+                            to="Intro" 
+                            spy={true} 
+                            smooth={true} 
+                            duration={500} 
+                        >
+                            <Tab label="Introduction" className={classes.tabLabel} />
+                        </NavLink>
                         <NavLink
                             to="bootcamp" 
                             spy={true} 

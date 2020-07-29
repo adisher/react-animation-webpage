@@ -1,6 +1,7 @@
 import React from 'react';
 import { Grid, CardMedia, Typography, Container, Link } from '@material-ui/core'
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
+import useWebAnimations, { fadeInUp } from "@wellyshen/use-web-animations"
 
 import astronaut from '../images/astronaut-animate.svg'
 import telecom from '../images/telecommuting-animate.svg'
@@ -18,6 +19,7 @@ let theme = createMuiTheme();
 theme = responsiveFontSizes(theme);
 
 export default function Grids() {
+    const { ref: bootcampImg } = useWebAnimations({ ...fadeInUp });
   return (
     <Container>
         {/* 1 */}
@@ -43,6 +45,7 @@ export default function Grids() {
                 justify="space-between" 
                 alignItems="center" 
                 spacing={5} 
+                ref={bootcampImg}
                 style=
                     {{
                         marginBottom: "200px",

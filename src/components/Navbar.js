@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { makeStyles, AppBar, Toolbar, IconButton, Tabs, Tab, Drawer, ListItemText, List, ListItem } from '@material-ui/core'
-import MenuIcon from '@material-ui/icons/Menu';
-import CancelIcon from '@material-ui/icons/Cancel';
+import { makeStyles, AppBar, Toolbar, Tabs, Tab } from '@material-ui/core'
+
 import logo from '../images/logo.png'
+
+import Drawers from './Drawer.js' 
 
 import { Link as NavLink } from 'react-scroll'
 
@@ -30,25 +31,6 @@ const useStyles = makeStyles( (theme) => ({
         },
         [theme.breakpoints.down('sm')]: { display: 'none' }
     },
-    appMenu: {
-        [theme.breakpoints.up('md')]: { display: 'none' },
-        display: "flex",
-        justifyContent: "flex-end",
-        paddingRight: "20px",
-    },
-    drawerPaper: {
-        minWidth: '100%', 
-        minHeight: '100%',
-        backgroundColor: "#243066",
-        color: "mintcream",
-        overflow: "hidden",
-        opacity: 0.8,
-        alignItems: "center",
-        justifyContent: "center",
-        [theme.breakpoints.up('md')]: {
-            position: 'relative',
-        },
-    },
 
 }))
 export default function Navbar() {
@@ -72,14 +54,11 @@ export default function Navbar() {
         }
     }, [])
 
-    const [open, setOpen] = useState(false)
-    // console.log("console", open)
     const [tab, setTab] = useState(0)
 
     const handleChange = (event, tab) => {
         setTab(tab);
     };
-
 
     return (
         <>
@@ -88,13 +67,12 @@ export default function Navbar() {
                 elevation={0}
             >
                 <Toolbar>
-                    <img src={logo} alt="logo" style={{maxWidth: 200}} />
+                    <img src={logo} alt="logo" style={{maxWidth: 200}} loading="lazy"/>
                     <Tabs 
                         value={tab} onChange={handleChange}
-                        variant="fullWidth"
                         TabIndicatorProps={{
                             style: {
-                            height:"0px",
+                            height: 0,
                             }
                         }}
                         style={{margin: 'auto'}}
@@ -124,44 +102,8 @@ export default function Navbar() {
                             <Tab label="Schedule" className={classes.tabLabel} />
                         </NavLink>
                     </Tabs>
-                    <div style={{marginLeft: "auto"}}>
-                        <IconButton className={classes.appMenu} onClick={() => setOpen(!open)} edge="end" color="inherit" aria-label="menu">
-                            {open? <CancelIcon/> : <MenuIcon/> }
-                        </IconButton>
-                    </div>
-                    <Drawer
-                        variant="temporary"
-                        open={open}
-                        anchor="right"
-                        elevation={0}
-                        disableBackdropClick
-                        disableScrollLock
-                        onClose={() => setOpen(!open)}
-                        classes={{
-                            paper: classes.drawerPaper,
-                        }}
-                    >
-                        <List>
-                            {['Home', 'Services', 'Contact'].map((text, index) => (
-                            <ListItem
-                                button
-                                key={text}
-                                selected={tab === index}
-                                onClick={(event) => handleChange(event, index)}
-                            >
-                                <ListItemText 
-                                    primary={text} 
-                                    primaryTypographyProps= {{ 
-                                        style: {
-                                            fontSize: "large",
-                                            fontWeight: "bold",
-                                        } 
-                                    }} 
-                                />
-                            </ListItem>
-                            ))}
-                        </List>
-                    </Drawer>
+                    
+                    <Drawers />
                 </Toolbar>
             </AppBar>
         </>

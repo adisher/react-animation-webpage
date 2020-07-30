@@ -9,6 +9,7 @@ export default function Loader() {
         </div>
             <div className='centered'>
                 <img 
+                    loading="lazy"
                     className='App-logo'
                     src={logo} alt="logo" 
                     style={{height:250}} 

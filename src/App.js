@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline'
 
 import Layout from './components/Layout';
 import Grids from './components/Grids';
@@ -9,14 +8,16 @@ export default function App() {
   const [loading, setLoading] = useState(false)
   const [component, setComponent] = useState()
   console.log(component)
+
   useEffect(() => {
       setLoading(true);
-
       const timer = setTimeout( () => {
-        setComponent(Loader);
+        setComponent(Loader)
         setLoading(false)
+        clearTimeout(timer)
       }, 2000);
-      return () => clearTimeout(timer)
+      
+      
   }, []);
 
   return (
@@ -24,7 +25,6 @@ export default function App() {
       {loading && <Loader/> }
       {!loading && 
         <>
-        <CssBaseline />
         <Layout>
           <Grids />
         </Layout>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, CardMedia, Typography, Container, Link } from '@material-ui/core'
+import { Grid, Typography, Container, Link } from '@material-ui/core'
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles'
 import useWebAnimations, { fadeInUp } from "@wellyshen/use-web-animations"
 
@@ -53,15 +53,15 @@ export default function Grids() {
                         zIndex:'1'
                     }}
             >
-                <Grid item xs={4} md={4}>
-                    <CardMedia
-                        component="img"
-                        image={astronaut}
+                <Grid item xs={5} md={4}>
+                    <img
+                        loading="lazy"
+                        src={astronaut}
                         alt="astronaut"
                         style={{maxHeight: "450px", maxWidth: "450px"}}
                     />
                 </Grid>
-                <Grid item xs={8} md={8}>
+                <Grid item xs={7} md={8}>
                     <ThemeProvider theme={theme}>
                         <Typography variant="h4" style={{paddingBottom: "30px", color: "orange"}}>
                             Bootcamp 2020
@@ -147,9 +147,9 @@ export default function Grids() {
                     </Grid>
                 </Grid>
                 <Grid item xs={6} md={4}>
-                    <CardMedia
-                        component="img"
-                        image={telecom}
+                    <img
+                        loading="lazy"
+                        src={telecom}
                         alt="telecom"
                         style={{maxheight: "450px", maxWidth: "450px"}}
                     />

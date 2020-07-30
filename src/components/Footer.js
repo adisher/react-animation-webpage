@@ -1,5 +1,4 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
@@ -73,7 +72,6 @@ export default function Footer() {
   return (
     <>
     <div className={classes.root}>
-        <CssBaseline />
         <Container component="main" className={classes.main}>
             <Typography variant="h3" align='center' gutterBottom style={{color:"orange"}}>
                 Start Learning
@@ -82,15 +80,15 @@ export default function Footer() {
                 {'We have to understand humanity is facing a COVID-19 induced global economic recession and only the high-tech and software companies have grown and their stock prices and business have risen in this environment. '} 
                 {'We need to immediately get ready to face the upcoming economic crises boldly.'}
             </Typography>
-                <Grid Conainer justify="center" align='center'>
-                    <img src={company} alt='company' style={{maxWidth:'300px', maxHeight:'300px'}} />
-                    <img ref={searchImg} src={search} alt='search' style={{maxWidth:'300px', maxHeight:'300px'}} />
+                <Grid item justify="center" align='center'>
+                    <img loading="lazy" src={company} alt='company' style={{maxWidth:'250px', maxHeight:'250px'}} />
+                    <img loading="lazy" ref={searchImg} src={search} alt='search' style={{maxWidth:'250px', maxHeight:'250px'}} />
                 </Grid>
         </Container>
         <footer className={classes.footer}>
         <Container maxWidth="sm"> 
             <div style={{display:'flex', justifyContent:'space-evenly', alignItems:'center'}}>
-                <Social />
+              <Social />
             </div>
         </Container>
         </footer>

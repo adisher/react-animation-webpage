@@ -33,4 +33,4 @@ jobs:
         run: npm install -g surge
       
       - name: Run surge
-        run: surge ./build Animation4b-adilsher.surge.sh --token ${{ secrets.SURGE_TOKEN }}
+        run: surge ./build animations4b-adilsher.surge.sh --token ${{ secrets.SURGE_TOKEN }}
